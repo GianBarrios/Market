@@ -11,6 +11,8 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <!-- Layout config Js -->
     <script src="assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
@@ -141,15 +143,20 @@
     <!-- end auth-page-wrapper -->
 
     <!-- JAVASCRIPT -->
-    <script src="CODIGO/assets\libs\bootstrap\js\bootstrap.bundle.min.js"></script>
-    <script src="CODIGO/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="CODIGO/assets/libs/node-waves/waves.min.js"></script>
-    <script src="CODIGO/assets/libs/feather-icons/feather.min.js"></script>
-    <script src="CODIGO/assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="CODIGO/assets/js/plugins.js"></script>
+    <script src="assets\libs\bootstrap\js\bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
 
     <!-- password-addon init -->
     <script src="assets/js/pages/password-addon.init.js"></script>
+
+    <!--jquery cdn-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!--select2 cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <script type="text/javascript" src="index.js"></script>
 </body>

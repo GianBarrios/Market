@@ -1,27 +1,27 @@
 <?php 
 /*TODO llamando Clases */
 require_once ("../config/conexion.php");
-require_once("../models/Empresa.php");
+require_once("../models/Sucursal.php");
 
-$empresa = new Empresa();
+$sucursal = new Sucursal();
 
 switch($_GET["op"]){
     /*TODO Guardar y editar, guardar cuando el ID este vacio, y actualizar cuando se envie el ID */
     case "guardaryeditar":
         if(empty($_Post["emp_id"])){
-            $empresa->insert_empresa($_POST["com_id"],$_POST["emp_nom"],$_POST["emp_nit"]);
+            $sucursal->insert_sucursal($_POST["com_id"],$_POST["emp_nom"],$_POST["emp_nit"]);
             } else{
-                $empresa->update_empresa($_POST["emp_id"],$_POST["com_id"],$_POST["emp_nom"],$_POST["emp_nit"]);
+                $sucursal->update_sucursal($_POST["emp_id"],$_POST["com_id"],$_POST["emp_nom"],$_POST["emp_nit"]);
             }
          break;
 
          /*TODO Listado de registros formato JSon para datatable JS */
     case "listar":
-        $datos=$empresa->get_empresa_x_com_id($_POST["com_id"]);
+        $datos=$sucursal->get_sucursal_x_com_id($_POST["emp_id"]);
         $data=Array();
         foreach($datos as $row){
             $sub_array = array();
-            $sub_array = $row["emp_nom"];
+            $sub_array = $row["SUC_NOM"];
             $sub_array = "Editar";
             $sub_array = "Eliminar";
             $data[] = $sub_array;
@@ -36,7 +36,7 @@ switch($_GET["op"]){
          break;  
         /*TODO Mostrar informacion de registro segun su ID */
     case    "mostrar":
-        $datos=$empresa->get_empresa_x_emp_id($_POST["emp_id"]);
+        $datos=$sucursal->get_sucursal_x_com_id($_POST["emp_id"]);
         if(is_array($datos)==true and count($datos)>0){
             foreach($datos as $row) {
                 $output["emp_id"]=$row["emp_id"];
@@ -51,16 +51,16 @@ switch($_GET["op"]){
 /*TODO Cambiar el estado a 0 del registro*/ 
     case "eliminar":
 
-        $empresa->delete_empresa($_POST["emp_id"]);
+        $sucursal->delete_sucursal($_POST["emp_id"]);
         break;
     /* TODO LISTAR COMBO */
     case "combo";
-        $datos=$empresa->get_empresa_x_com_id($_POST["com_id"]);
+        $datos=$sucursal->get_sucursal_x_com_id($_POST["emp_id"]);
         if (is_array($datos)==true and count($datos)>0){
-            $html="";
+            $html ="";
             $html.="<option selected>Seleccionar </option>";
             foreach ($datos as $row) {
-                $html.="<option value='".$row["emp_id"]."'>".$row["emp_nom"]."</option>";
+                $html."<option value='".$row["SUC_ID"]."'>".$row["SUC_NOM"]."</option>";
             }
             echo $html;
         }

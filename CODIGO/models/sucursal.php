@@ -32,20 +32,12 @@ suc_<?php
             $conectar=parent::Conexion();
             $sql = "SP_I_SUCURSAL_01 ?,?";
             $query=$conectar->prepare($sql);
-<<<<<<< HEAD
             $query -> bindValue(1,$emp_id);
-=======
-            $query -> bindValue(1,$com_id);
->>>>>>> 3fb13662bdaef0dc82a51c21ae5319e0d0603be7
             $query -> bindValue(2,$suc_nom);
             $query -> execute();
         }
         /* TODO: ACTUALIZAR DATOS */
-<<<<<<< HEAD
         public function update_sucursal($suc_id,$emp_id,$suc_nom,$suc_nit){
-=======
-        public function update_sucursal($suc_id,$emp_id,$suc_nom,$suc_ruc){
->>>>>>> 3fb13662bdaef0dc82a51c21ae5319e0d0603be7
             $conectar=parent::Conexion();
             $sql = "SP_U_SUCURSAL_01 ?,?,?";
             $query=$conectar->prepare($sql);
