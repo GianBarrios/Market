@@ -14,7 +14,6 @@ switch($_GET["op"]){
                 $compania->update_compania($_POST["com_id"],$_POST["com_nom"]);
             }
          break;
-
          /*TODO Listado de registros formato JSon para datatable JS */
     case "listar":
         $datos=$compania->get_compania();
@@ -26,16 +25,12 @@ switch($_GET["op"]){
             $sub_array = "Eliminar";
             $data[] = $sub_array;
         }
-
         $result = array(
             "sEcho" => 1,
             "iTotalRecords" =>count($data),
             "iTotalDisplayRecords" =>count($data),
             "aaData" =>$data);
             echo json_encode($results);
-        
-
-
          break;  
         /*TODO Mostrar informacion de registro segun su ID */
     case    "mostrar":
