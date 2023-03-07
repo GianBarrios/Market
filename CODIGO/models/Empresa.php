@@ -1,14 +1,13 @@
-emp_<?php
-    class Empresa extends Conectar {
-      /*   TODO: LISTAR REGISTROS */
-        public function get_empresa_x_com_id ($com_id){
+<?php
+    class Empresa extends Conectar{
+        /* TODO: Listar Registros */
+        public function get_empresa_x_com_id($com_id){
             $conectar=parent::Conexion();
-            $sql = "SP_L_EMPRESA_01 ?";
+            $sql="SP_L_EMPRESA_01 ?";
             $query=$conectar->prepare($sql);
-            $query -> bindValue(1,$com_id);
-            $query -> execute();
+            $query->bindValue(1,$com_id);
+            $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
-
         }
         /* TODO: LISTAR REGISTRO POR ID EN ESPECIFICO */
         public function get_empresa_x_emp_id ($emp_id){

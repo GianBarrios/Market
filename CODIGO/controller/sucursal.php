@@ -17,7 +17,7 @@ switch($_GET["op"]){
 
          /*TODO Listado de registros formato JSon para datatable JS */
     case "listar":
-        $datos=$sucursal->get_sucursal_x_com_id($_POST["emp_id"]);
+        $datos=$sucursal->get_sucursal_x_emp_id($_POST["emp_id"]);
         $data=Array();
         foreach($datos as $row){
             $sub_array = array();
@@ -36,7 +36,7 @@ switch($_GET["op"]){
          break;  
         /*TODO Mostrar informacion de registro segun su ID */
     case    "mostrar":
-        $datos=$sucursal->get_sucursal_x_com_id($_POST["emp_id"]);
+        $datos=$sucursal->get_sucursal_x_emp_id($_POST["emp_id"]);
         if(is_array($datos)==true and count($datos)>0){
             foreach($datos as $row) {
                 $output["emp_id"]=$row["emp_id"];
@@ -55,15 +55,15 @@ switch($_GET["op"]){
         break;
     /* TODO LISTAR COMBO */
     case "combo";
-        $datos=$sucursal->get_sucursal_x_com_id($_POST["emp_id"]);
-        if (is_array($datos)==true and count($datos)>0){
-            $html ="";
-            $html.="<option selected>Seleccionar </option>";
-            foreach ($datos as $row) {
-                $html."<option value='".$row["SUC_ID"]."'>".$row["SUC_NOM"]."</option>";
-            }
-            echo $html;
+    $datos=$sucursal->get_sucursal_x_emp_id($_POST["emp_id"]);
+    if(is_array($datos)==true and count($datos)>0){
+        $html="";
+        $html.="<option selected>Seleccionar</option>";
+        foreach($datos as $row){
+            $html.= "<option value='".$row["SUC_ID"]."'>".$row["SUC_NOM"]."</option>";
         }
+        echo $html;
+    }
     break;
 }
 ?>

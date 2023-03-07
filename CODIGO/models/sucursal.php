@@ -1,7 +1,7 @@
 suc_<?php
     class Sucursal extends Conectar {
       /*   TODO: LISTAR REGISTROS */
-        public function get_sucursal_x_com_id ($emp_id){
+        public function get_sucursal_x_emp_id ($emp_id){
             $conectar=parent::Conexion();
             $sql = "SP_L_SUCURSAL_01 ?";
             $query=$conectar->prepare($sql);
@@ -37,7 +37,7 @@ suc_<?php
             $query -> execute();
         }
         /* TODO: ACTUALIZAR DATOS */
-        public function update_sucursal($suc_id,$emp_id,$suc_nom,$suc_nit){
+        public function update_sucursal($suc_id,$emp_id,$suc_nom){
             $conectar=parent::Conexion();
             $sql = "SP_U_SUCURSAL_01 ?,?,?";
             $query=$conectar->prepare($sql);
