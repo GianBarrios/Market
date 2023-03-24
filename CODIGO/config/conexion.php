@@ -1,4 +1,5 @@
 <?php
+    session_start();
     class   Conectar{
         protected $dbh;
 
@@ -11,6 +12,10 @@
                 print "Error en la conexion BD". $e->getMessage(). "<br/>";
                 die();
             }
+        }
+
+        public static function ruta() {
+            return "http://localhost/Ferreteria/CODIGO/";
         }
     }
 
