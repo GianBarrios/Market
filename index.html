@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age of Conquest – World Strategy</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ── Topbar ─────────────────────────────────────────────────────── -->
+  <div id="topbar">
+    <span id="game-title">AGE OF CONQUEST</span>
+    <span id="turn-num">Turno 1</span>
+
+    <div class="stat-chip">
+      <span class="label">💰 Oro</span>
+      <span class="value" id="gold-val">—</span>
+    </div>
+    <div class="stat-chip">
+      <span class="label">📈 Ingreso</span>
+      <span class="value" id="income-val">—</span>
+    </div>
+    <div class="stat-chip">
+      <span class="label">⚔ Ejércitos</span>
+      <span class="value" id="armies-val">—</span>
+    </div>
+    <div class="stat-chip">
+      <span class="label">🏰 Territorios</span>
+      <span class="value" id="terr-val">—</span>
+    </div>
+
+    <div class="spacer"></div>
+    <button id="end-turn-btn" disabled>Terminar Turno ▶</button>
+  </div>
+
+  <!-- ── Main ───────────────────────────────────────────────────────── -->
+  <div id="main">
+
+    <!-- Left panel -->
+    <div id="left-panel" class="panel">
+
+      <div class="section">
+        <h3>Acciones</h3>
+        <button class="act-btn" id="recruit-btn" disabled>
+          ⚔ Reclutar 5 ejércitos (50 oro)
+        </button>
+        <button class="act-btn" id="attack-btn" disabled>
+          ⚔ Atacar
+        </button>
+      </div>
+
+      <div class="section">
+        <h3>País Seleccionado</h3>
+        <div id="sel-name">—</div>
+        <div class="stat-row"><span>Propietario</span><span id="sel-owner">—</span></div>
+        <div class="stat-row"><span>Ejércitos</span><span id="sel-armies">—</span></div>
+        <div class="stat-row"><span>Ingresos</span><span id="sel-income">—</span></div>
+      </div>
+
+      <div class="section">
+        <h3>Controles del mapa</h3>
+        <div style="font-size:11px; color:var(--muted); line-height:1.8">
+          🖱 Arrastrar → mover mapa<br>
+          🖱 Rueda → zoom<br>
+          🖱 Clic → seleccionar país<br>
+          ⚔ Atacar → clic en enemigo adyacente
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Leyenda</h3>
+        <div class="leg-row"><span class="leg-dot" style="background:#27ae60"></span>Tu territorio</div>
+        <div class="leg-row"><span class="leg-dot" style="background:#c0392b"></span>Enemigo (IA)</div>
+        <div class="leg-row"><span class="leg-dot" style="background:#555"></span>Neutral</div>
+        <div class="leg-row"><span class="leg-dot" style="background:#f1c40f; border-color:#f1c40f"></span>Seleccionado</div>
+        <div class="leg-row"><span class="leg-dot" style="background:#e74c3c; border-color:#e74c3c"></span>Objetivo de ataque</div>
+      </div>
+
+    </div>
+
+    <!-- Map -->
+    <div id="map-wrap">
+      <canvas id="canvas"></canvas>
+      <div id="tooltip"></div>
+
+      <!-- Zoom controls -->
+      <div id="zoom-ctrl">
+        <button id="zoom-in"    title="Acercar">+</button>
+        <button id="zoom-reset" title="Restablecer" style="font-size:11px">⌂</button>
+        <button id="zoom-out"   title="Alejar">−</button>
+      </div>
+
+      <!-- Loading -->
+      <div id="loading">
+        <h1>AGE OF CONQUEST</h1>
+        <div id="load-msg">Cargando mapa del mundo…</div>
+        <div class="prog-bar"><div id="prog-fill"></div></div>
+      </div>
+    </div>
+
+    <!-- Right panel -->
+    <div id="right-panel" class="panel">
+
+      <div class="section">
+        <h3>Potencias mundiales</h3>
+        <div id="powers-list"></div>
+      </div>
+
+      <div class="section">
+        <h3>Objetivo de victoria</h3>
+        <div style="font-size:11px; color:var(--muted); line-height:1.8">
+          Controla el <strong style="color:var(--gold)">55%</strong> de los territorios del mundo para ganar.<br><br>
+          Recluta ejércitos, conquista países adyacentes y construye tu imperio.
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Registro de batalla</h3>
+        <div id="log-list"></div>
+      </div>
+
+    </div>
+  </div><!-- #main -->
+
+</div><!-- #app -->
+
+<!-- Overlay (select / game over) -->
+<div id="overlay">
+  <div id="ov-box">
+    <div id="ov-title"></div>
+    <div id="ov-msg"></div>
+    <div id="ov-btns"></div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/topojson@3/dist/topojson.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
